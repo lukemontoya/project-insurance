@@ -1,6 +1,5 @@
 //Update the name of the controller below and rename the file.
-const doctor = require("../controllers/update.js")
-const appointments = require("../controllers/update.js")
+const insurance = require("../controllers/insurance.js")
 
 
 module.exports = function(app){
@@ -13,7 +12,7 @@ module.exports = function(app){
 
 function authenticateUser(req, res, next){
   if(!req.session.doctor){
-    res.redirect("/doctors/login");
+    res.redirect("/agents/login");
   }else{
     next();
   }
