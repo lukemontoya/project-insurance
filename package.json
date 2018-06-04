@@ -1,0 +1,30 @@
+{
+  "name": "clear",
+  "version": "1.0.0",
+  "description": "The goal of this project is to put what you've learned to use to:",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "connect-session-knex": "^1.4.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "knex": "^0.13.0",
+    "pg": "^7.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukemontoya/q2-group-project-requirements.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lukemontoya/q2-group-project-requirements/issues"
+  },
+  "homepage": "https://github.com/lukemontoya/q2-group-project-requirements#readme"
+}
