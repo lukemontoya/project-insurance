@@ -6,7 +6,30 @@
 
   </head>
   <body>
-    <h1>Agent Profile: <% agents[0].id %></h1>
+    <h1>Your Potential Future Agent Profile</h1>
+    <div class="container">
+      <% for(var i = 0; i < agents.length; i++){ %>
+      <div class="agent">
+        <h2><%= agents[i].agent_name %></h2>
+        <img src="<%= agents[i].IMG_url %>" alt="" height=300px>
+        <p>About Me: <%= agents[i].bio %></p>
+        <p>Location: <%= agents[i].location %></p>
+
+        <% if(agents.home !=false) { %>
+          <p>Home</p>
+        <% } %>
+
+        <% if(agents.car !=false) { %>
+          <p>Car</p>
+        <% } %>
+
+        <% if(agents.life !=false) { %>
+          <p>Life</p>
+        <% } %>
+
+      </div>
+      <% } %>
+    </div>
 
   </body>
 </html>
