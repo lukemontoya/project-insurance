@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Apointments</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style media="screen">
+      body{
+        display: block;
+        font-family: Raleway;
+        font-size: 1EM;
+        text-align: center;
+      }
+      form{
+        margin: 0px auto;
+        display: block;
+        width: 17EM;
+      }
+      input{
+        margin: 1EM;
+        border: 2px solid black;
+        width: 17EM;
+        padding: 10px 5px 10px 5px;
+        box-sizing: border-box;
+      }
+      input.submit{
+        padding: 15px 5px 15px 5px;
+        margin: 1EM;
+        width: 17EM;
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <div class="agents">
+        <h2>You are booking <%= agents.agent_name %></h2>
+    </div>
+
+    <form action="/book/agent/<%= agents.id %>" method="post">
+      <input type="text" name="client_name" placeholder="Name">
+      <input type="email" name="client_email" placeholder="Email">
+      <input type="text" name="date" placeholder="Date">
+      <input type="text" name="client_comment" placeholder="Comment">
+      <input class="submit" type="submit" value="Book It!">
+    </form>
+  </body>
+</html>

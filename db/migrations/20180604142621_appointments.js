@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     table.boolean("home").defaultTo("false");
     table.boolean("car").defaultTo("false");
     table.boolean("life").defaultTo("false");
-    table.boolean("status").defaultTo("unconfirmed");
+    table.text("status").defaultTo("unconfirmed");
     table.integer("agent_id")
       .notNullable()
       .references('id')
