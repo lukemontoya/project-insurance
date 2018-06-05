@@ -16,10 +16,18 @@ module.exports = function(app){
   app.post('/register', agentLogin.register);
   app.post('/login', agentLogin.login);
   app.use(authMiddleware);
+<<<<<<< HEAD
   app.get('/profile', agentProfile.index);
   app.get('/profile/edit', profileEdit.index);
   app.post('/profile/update', profileEdit.update);
   app.get('/appointments/:id', appts.index);
   app.get('/confirmed_appointments/:id', appts.confirmed);
   app.get('/completed_appointments/:id', appts.completed);
+=======
+  app.get('/profile', agentProfile.index)
+  app.get('/profile/edit', profileEdit.index)
+  app.post('/profile/update', profileEdit.update)
+  app.get('/appointments/:id', appts.index)
+  app.post('/logout', agentLogin.logout)
+>>>>>>> 377b0a09728b4c28c2dabb6f1ab291e0711241e4
 }
