@@ -9,7 +9,11 @@
     </style>
 </head>
 <body>
+    <form id="logout" action="/logout" method="post">
+        <button type="submit" class="btn btn-secondary">Logout</button>
+    </form>
     <h1>Welcome <%= agent.agent_name %></h1>
+    <h3><%= agent.location %></h3>
     <img src="<%= agent.IMG_url %>" height="300" width="300">
     <p><%= agent.bio %></p>
     <ul>

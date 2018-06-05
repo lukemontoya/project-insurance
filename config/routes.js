@@ -20,4 +20,5 @@ module.exports = function(app){
   app.get('/profile/edit', profileEdit.index)
   app.post('/profile/update', profileEdit.update)
   app.get('/appointments/:id', appts.index)
+  app.post('/logout', agentLogin.logout)
 }
