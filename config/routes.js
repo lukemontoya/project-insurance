@@ -10,7 +10,7 @@ module.exports = function(app){
   app.get('/view/agent/:id', insurance.agent);
   app.get('/book/agent/:id', insurance.bookGet);
   app.post('/book/agent/:id', insurance.bookCreate);
-
+  app.get('/confirmation/:id', insurance.appointment);
   app.get('/agent/login', agentLogin.index);
   app.post('/register', agentLogin.register)
   app.post('/login', agentLogin.login)
