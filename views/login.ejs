@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Agent Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <%if (error.length > 0) {%>
+                    <div class="alert alert-warning" role="alert">
+                        <%=error%>
+                    </div>
+                    <%}%>
+                        <h1>Login</h1>
+
+
+                        <form action="/login" method="post">
+                            <%if (agent !== undefined) {%>
+                                <input class="form-control form-control-lg" type="email" name="email" placeholder="Email" value="<%= agent.agent_email %>">
+                                <%} else {%>
+                                    <input class="form-control form-control-lg" type="email" name="email" placeholder="Email">
+                                    <%}%>
+                                        <input class="form-control form-control-lg" type="password" name="password" placeholder="Password">
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                        <br>
+                                        <br>
+                        </form>
+
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h1>Register</h1>
+
+                <form action="/register" method="post">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <input class="form-control form-control-lg" type="text" name="name" placeholder="Name">
+                    <input class="form-control form-control-lg" type="email" name="email" placeholder="Email">
+                    <input class="form-control form-control-lg" type="text" name="bio" placeholder="Bio">
+                    <input class="form-control form-control-lg" type="text" name="img_url" placeholder="Img Url">
+                    <input class="form-control form-control-lg" type="text" name="location" placeholder="Location">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" name="home">
+                        <label class="form-check-label" for="home">
+                            Home
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" name="car">
+                        <label class="form-check-label" for="car">
+                            Car
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" name="life">
+                        <label class="form-check-label" for="life">
+                            Life
+                        </label>
+                    </div>
+                    <input class="form-control form-control-lg" type="password" name="password" placeholder="Password">
+                    <input class="form-control form-control-lg" type="password" name="confirm" placeholder="Confirm Password">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
