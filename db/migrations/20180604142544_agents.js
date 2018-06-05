@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("agents",(table)=>{
     table.increments();
     table.string("agent_name");
-    table.string("agent_email");
+    table.string("agent_email").unique();
     table.text("bio");
     table.text("IMG_url");
     table.text("location");
