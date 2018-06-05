@@ -6,13 +6,11 @@ const authMiddleware = (req, res, next) => req.session.user_id ? next() : res.re
 module.exports = function(app){
 
   app.get('/', insurance.index);
+  app.get('/view/agent/:id', insurance.agent);
   app.get('/agent/login', agentLogin.index);
-  app.post('/register', agentLogin.register)
-  app.post('/login', agentLogin.login)
+  app.post('/register', agentLogin.register);
+  app.post('/login', agentLogin.login);
   app.use(authMiddleware);
-  app.get('/profile', agentProfile.index)
+  app.get('/profile', agentProfile.index);
 
 }
-
-
-
