@@ -15,7 +15,7 @@ module.exports = {
       .where('id', req.params.id)
       .then((agents)=>{
         // res.json(agents)
-        res.render('profiles', {agents:agents[0]});
+        res.render('custViewProfile', {agents:agents[0]});
       });
   }
 }
