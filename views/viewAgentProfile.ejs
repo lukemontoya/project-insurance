@@ -15,15 +15,15 @@
         <p>About Me: <%= agents[i].bio %></p>
         <p>Location: <%= agents[i].location %></p>
 
-        <% if(agents.home !=false) { %>
+        <% if(agents[i].home !=false) { %>
           <p>Home</p>
         <% } %>
 
-        <% if(agents.car !=false) { %>
+        <% if(agents[i].car !=false) { %>
           <p>Car</p>
         <% } %>
 
-        <% if(agents.life !=false) { %>
+        <% if(agents[i].life !=false) { %>
           <p>Life</p>
         <% } %>
 
