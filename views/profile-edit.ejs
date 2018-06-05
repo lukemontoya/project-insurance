@@ -20,9 +20,9 @@
         <small id="emailHelp" class="form-text text-muted">Please check all applicable</small>
         <div class="form-check">
             <%if (agent.home) {%>
-                <input class="form-check-input" type="checkbox" value="true" name="home" checked>
+                <input class="form-check-input" type="checkbox" name="home" checked>
             <%} else {%>
-                <input class="form-check-input" type="checkbox" value="true" name="home">
+                <input class="form-check-input" type="checkbox" name="home">
             <%}%>
             
             <label class="form-check-label" for="home">
@@ -31,9 +31,9 @@
         </div>
         <div class="form-check">
             <%if (agent.car) {%>
-                <input class="form-check-input" type="checkbox" value="true" name="car" checked>
+                <input class="form-check-input" type="checkbox" name="car" checked>
                 <%} else {%>
-                    <input class="form-check-input" type="checkbox" value="true" name="car">
+                    <input class="form-check-input" type="checkbox" name="car">
                     <%}%>
                     
                     <label class="form-check-label" for="car">
@@ -42,9 +42,9 @@
         </div>
         <div class="form-check">
             <%if (agent.life) {%>
-                <input class="form-check-input" type="checkbox" value="true" name="life" checked>
+                <input class="form-check-input" type="checkbox" name="life" checked>
                 <%} else {%>
-                    <input class="form-check-input" type="checkbox" value="true" name="life">
+                    <input class="form-check-input" type="checkbox" name="life">
                     <%}%>
                     
                     <label class="form-check-label" for="life">
