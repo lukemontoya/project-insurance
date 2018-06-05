@@ -30,7 +30,6 @@ module.exports = {
 
   bookCreate: function(req, res) {
     knex('appointments')
-
       .insert({
         client_name: req.body.client_name,
         client_email: req.body.client_email,
@@ -38,7 +37,20 @@ module.exports = {
         client_comment: req.body.client_comment,
         agent_id: req.params.id
       }).then(()=>{
-        res.redirect('/');
-    });
+
+        res.redirect('/confirmation/'+req.params.id);
+     });
+  },
+
+  appointment: function(req, res)  {
+    knex('agents')
+      .where('id', req.params.id)
+      .then((agents)=>{
+        knex('appointments')
+          .where('agent_id', req.params.id)
+          .then((appointments)=>{
+            res.render('confirmation', {agents:agents, appointments:appointments});
+          })
+      })
   }
 }
