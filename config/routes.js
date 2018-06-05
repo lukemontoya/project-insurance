@@ -2,6 +2,7 @@
 const insurance = require("../controllers/insurance.js");
 const agentLogin = require("../controllers/login.js");
 const agentProfile = require("../controllers/profile.js");
+const profileEdit = require("../controllers/edit.js");
 const authMiddleware = (req, res, next) => req.session.user_id ? next() : res.redirect('/agent/login');
 module.exports = function(app){
 
@@ -15,5 +16,5 @@ module.exports = function(app){
   app.post('/login', agentLogin.login)
   app.use(authMiddleware);
   app.get('/profile', agentProfile.index)
-
+  app.get('/profile/edit', profileEdit.index)
 }

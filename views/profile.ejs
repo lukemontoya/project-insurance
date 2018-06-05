@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title><%= agent.agent_name %> Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <style>
         
     </style>
@@ -13,14 +14,15 @@
     <p><%= agent.bio %></p>
     <ul>
         <%if (agent.home) {%>
-            <li>Home</li>
+            <li>Home</li><i class="fa fa-home fa-5x"></i>
         <%}%>
         <%if (agent.car) {%>
-            <li>Car</li>
+            <li>Car</li><i class="fa fa-car fa-5x"></i>
         <%}%>
         <%if (agent.life) {%>
-            <li>Life</li>
+            <li>Life</li><i class="fa fa-heartbeat fa-5x"></i>
         <%}%>
     </ul>
+    <a href="/profile/edit">Edit Profile</a>
 </body>
 </html>
