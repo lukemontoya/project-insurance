@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
     table.boolean("car").defaultTo("false");
     table.boolean("life").defaultTo("false");
     table.string("password");
+    table.boolean("admin").defaultTo("false");
     table.timestamps(true, true);
   });
 };
