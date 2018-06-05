@@ -19,5 +19,5 @@ module.exports = function(app){
   app.get('/profile', agentProfile.index)
   app.get('/profile/edit', profileEdit.index)
   app.post('/profile/update', profileEdit.update)
-  app.get('/appointments/view/:id', appts.index)
+  app.get('/appointments', appts.index)
 }
