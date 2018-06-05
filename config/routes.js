@@ -13,11 +13,13 @@ module.exports = function(app){
   app.post('/book/agent/:id', insurance.bookCreate);
   app.get('/confirmation/:id', insurance.appointment);
   app.get('/agent/login', agentLogin.index);
-  app.post('/register', agentLogin.register)
-  app.post('/login', agentLogin.login)
+  app.post('/register', agentLogin.register);
+  app.post('/login', agentLogin.login);
   app.use(authMiddleware);
-  app.get('/profile', agentProfile.index)
-  app.get('/profile/edit', profileEdit.index)
-  app.post('/profile/update', profileEdit.update)
-  app.get('/appointments/:id', appts.index)
+  app.get('/profile', agentProfile.index);
+  app.get('/profile/edit', profileEdit.index);
+  app.post('/profile/update', profileEdit.update);
+  app.get('/appointments/:id', appts.index);
+  app.get('/confirmed_appointments/:id', appts.confirmed);
+  app.get('/completed_appointments/:id', appts.completed);
 }
