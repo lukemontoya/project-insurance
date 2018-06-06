@@ -41,7 +41,50 @@
 
         </div>
 
-        
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h1>Register</h1>
+
+                <form  enctype="multipart/form-data" action="/register" method="post">
+
+                    <input class="form-control form-control-lg" type="text" name="name" placeholder="Name">
+                    <input class="form-control form-control-lg" type="email" name="email" placeholder="Email">
+                    <textarea name="bio" placeholder="Bio" cols="30" rows="10"></textarea>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Upload Profile Image</label>
+                        <input type="file" name="upload" accept=".jpg, .jpeg, .png" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                    <input class="form-control form-control-lg" type="text" name="location" placeholder="Location">
+                    <small id="emailHelp" class="form-text text-muted">Please check all applicable</small>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" name="home">
+                        <label class="form-check-label" for="home">
+                            Home
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" name="car">
+                        <label class="form-check-label" for="car">
+                            Car
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" name="life">
+                        <label class="form-check-label" for="life">
+                            Life
+                        </label>
+                    </div>
+                    <input class="form-control form-control-lg" type="password" name="password" placeholder="Password">
+                    <input class="form-control form-control-lg" type="password" name="confirm" placeholder="Confirm Password">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+
+
+
+
+            </div>
+        </div>
     </div>
 </body>
 
