@@ -34,9 +34,9 @@
     <h1>Agent <%= agents[0].agent_name %>'s Appointments</h1>
 
     <div class="status">
-      <a href="/appointments">Unconfirmed Appointments</a>
-      <a href="/confirmed_appointments">Confirmed Appointments</a>
-      <a href="/completed_appointments">Completed Appointments</a>
+      <a href="/view/agent/appointments/<%= agents[0].id %>">Unconfirmed Appointments</a>
+      <a href="/confirmed_appointments/<%= agents[0].id %>">Confirmed Appointments</a>
+      <a href="/completed_appointments/<%= agents[0].id %>">Completed Appointments</a>
     </div>
 
     <div class="container">

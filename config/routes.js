@@ -21,6 +21,8 @@ module.exports = function(app){
 
   app.get('/admin', admin.login);
   app.get('/view/agent/appointments/:id', admin.appointmentsView);
+  app.get('/confirmed_appointments/:id', admin.confirmed);
+  app.get('/completed_appointments/:id', admin.completed);
   app.post('/delete/agent/:id', admin.deleteAgent);
 
   app.post('/sendmessage', agentProfile.send)
