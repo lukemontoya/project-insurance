@@ -24,20 +24,20 @@ module.exports = {
                     life: user.life ? user.life : false,
                     password: user.password
                 }).then(() => {
-                    console.log('success again yay!')
+                    
                         res.redirect('/profile');
                     
 
                 })
                     .catch(() => {
                         res.redirect('/profile');
-                        console.log('nope')
+                        
                     })
             })
 
         } else {
             res.redirect('/profile');
-            console.log('error')
+            
         }
         
         

@@ -1,5 +1,9 @@
 const knex = require("../db/knex.js");
 const hasher = require("../config/hasher");
+const AWS = require('aws-sdk');
+const s3Bucket = new AWS.S3({ params: { Bucket: "q2insuranceproject" } });
+const baseAWSURL = "https://s3-us-east-1.amazonaws.com/q2insuranceproject/"
+const fileUpload = require('express-fileupload');
 module.exports = {
     index: function (req, res) {
         if (!req.session.error) {
@@ -16,16 +20,28 @@ module.exports = {
         }
 
 
-
+        
     },
     register: function (req, res) {
+        let uploadData = {
+            Key: req.body.email,
+            Body: req.files.upload.data,
+            ContentType: req.files.upload.mimetype,
+            ACL: 'public-read'
+        }
+        s3Bucket.putObject(uploadData, function(err, data) {
+            if(err){
+                console.log(err);
+                return;
+            }
+        })
         if (req.body.password && (req.body.password === req.body.confirm)) {
             hasher.hash(req.body).then(user => {
                 knex('agents').insert({
                     agent_name: user.name,
                     agent_email: user.email,
                     bio: user.bio,
-                    IMG_url: user.img_url,
+                    IMG_url: baseAWSURL + uploadData.Key,
                     location: user.location,
                     home: user.home,
                     car: user.car,

@@ -1,3 +1,7 @@
 /node_modules
 
 knex_reset\.sh
+
+config\.json
+
+package-lock\.json
