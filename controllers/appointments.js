@@ -45,6 +45,7 @@ module.exports = {
         knex('appointments')
           .where('id', req.params.id)
           .then((appointments)=>{
+            // res.json(appointments)
             res.render('apptConfirmPage', {appointments:appointments});
           });
       }
