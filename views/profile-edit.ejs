@@ -14,7 +14,7 @@
         <textarea name="bio" placeholder="Bio" cols="30" rows="10"><%= agent.bio %></textarea>
         <div class="form-group">
             <label for="exampleFormControlFile1">Upload Profile Image</label>
-            <input type="file" name="upload" accept=".jpg, .jpeg, .png" class="form-control-file" id="exampleFormControlFile1">
+            <input type="file" name="upload" accept=".jpg, .jpeg, .png" class="form-control-file" id="exampleFormControlFile1" value="<%= agent.IMG_url %>">
         </div>
         <input class="form-control form-control-lg" type="text" name="location" placeholder="Location" value="<%= agent.location %>">
         <small id="emailHelp" class="form-text text-muted">Please check all applicable</small>
