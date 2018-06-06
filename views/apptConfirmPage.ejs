@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Agent Confirm Appointments</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style media="screen">
+      body{
+        display: block;
+        font-family: Raleway;
+        font-size: 1EM;
+        text-align: center;
+      }
+      .container{
+        margin-top: 50px;
+      }
+      form{
+        margin: 0px auto;
+        display: block;
+        width: 17EM;
+      }
+      input{
+        margin: 1EM;
+        border: 2px solid black;
+        width: 17EM;
+        height: 10EM;
+        padding: 10px 5px 10px 5px;
+        box-sizing: border-box;
+      }
+      .submit{
+        padding: 15px 5px 15px 5px;
+        margin: 1EM;
+        width: 10EM;
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <div class="container">
+      <div class="appointments">
+        <h2>Name: <%= appointments[0].client_name %></h2>
+        <p>Email: <%= appointments[0].client_email %></p>
+        <p>Date: <%= appointments[0].date %></p>
+        <p>Comment: <%= appointments[0].client_comment %></p>
+
+
+        <% if(appointments[0].status === "unconfirmed") { %>
+          <form action="/appointments/<%= appointments[0].id %>" method="post">
+            <button type="submit" name="button">Confirm Appointment</button>
+          </form>
+        <% } %>
+        <% if(appointments[0].status === "confirmed") { %>
+          <form action="/complete/<%= appointments[0].id %>" method="post">
+            <button type="submit" name="button">Complete Appointment</button>
+          </form>
+        <% } %>
+        <% if(appointments[0].status === "completed") { %>
+          <form action="/delete/<%= appointments[0].id %>" method="post">
+            <button type="submit" name="button">Delete Appointment</button>
+          </form>
+        <% } %>
+        <% for(let i = 0; i < appointments.length; i++) { %>
+      </div>
+        <% } %>
