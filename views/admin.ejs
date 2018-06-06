@@ -40,11 +40,14 @@
         <h2><%= agents[i].agent_name %></h2>
         <img src="<%= agents[i].IMG_url %>" alt="" height=300px>
       <div class="left">
-        <a href="/view/agent/<%= agents[i].id %>">Profile</a>
+
+        <form action="/view/agent/<%= agents[i].id %> " method="get">
+            <button type="submit" name="button">Profile</button>
+        </form> <br>
         <form action="/delete/agent/<%=agents[i].id%> " method="post">
             <button type="submit" name="button">Delete</button>
         </form>
-        
+
       </div>
       </div>
       <% } %>
