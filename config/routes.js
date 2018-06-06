@@ -13,9 +13,10 @@ module.exports = function(app){
   app.post('/book/agent/:id', insurance.bookCreate);
   app.get('/confirmation/:id', insurance.appointment);
   app.get('/agent/login', agentLogin.index);
-  app.post('/register', agentLogin.register);
-  app.post('/login', agentLogin.login);
+  app.post('/register', agentLogin.register)
+  app.post('/login', agentLogin.login)
   app.use(authMiddleware);
+<<<<<<< HEAD
   app.get('/profile', agentProfile.index);
   app.get('/profile/edit', profileEdit.index);
   app.post('/profile/update', profileEdit.update);
@@ -24,4 +25,11 @@ module.exports = function(app){
   app.get('/completed_appointments/:id', appts.completed);
   app.get('appointments/view/:id', appts.view);
   app.post('/logout', agentLogin.logout);
+=======
+  app.get('/profile', agentProfile.index)
+  app.get('/profile/edit', profileEdit.index)
+  app.post('/profile/update', profileEdit.update)
+  app.get('/appointments/:id', appts.index)
+  app.post('/logout', agentLogin.logout)
+>>>>>>> c0646f7b7d7a213887806ae4150f4cbbad26e556
 }

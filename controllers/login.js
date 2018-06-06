@@ -1,9 +1,14 @@
+const express = require("express");
+const path = require("path");
 const knex = require("../db/knex.js");
 const hasher = require("../config/hasher");
+const app = express();
 const AWS = require('aws-sdk');
-const s3Bucket = new AWS.S3({ params: { Bucket: "q2insuranceproject" } });
-const baseAWSURL = "https://s3-us-east-1.amazonaws.com/q2insuranceproject/"
 const fileUpload = require('express-fileupload');
+app.use(fileUpload());
+// AWS.config.loadFromPath('./config.json');
+const s3Bucket = new AWS.S3({ params: { Bucket: "q2insuranceproject" } });
+const baseAWSURL = "https://s3.amazonaws.com/q2insuranceproject/"
 module.exports = {
     index: function (req, res) {
         if (!req.session.error) {
@@ -23,6 +28,8 @@ module.exports = {
         
     },
     register: function (req, res) {
+        // console.log(req.body)
+        // console.log(req.files.upload)
         let uploadData = {
             Key: req.body.email,
             Body: req.files.upload.data,
