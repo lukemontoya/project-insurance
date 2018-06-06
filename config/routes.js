@@ -22,9 +22,9 @@ module.exports = function(app){
   app.get('/profile', agentProfile.index);
   app.get('/profile/edit', profileEdit.index);
   app.post('/profile/update', profileEdit.update);
-  app.get('/appointments/:id', appts.index);
-  app.get('/confirmed_appointments/:id', appts.confirmed);
-  app.get('/completed_appointments/:id', appts.completed);
+  app.get('/appointments', appts.index);
+  app.get('/confirmed_appointments', appts.confirmed);
+  app.get('/completed_appointments', appts.completed);
   app.get('/appointments/view/:id', appts.view);
   app.post('/appointments/view/:id', appts.createComment);
 
