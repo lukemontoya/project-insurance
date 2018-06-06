@@ -4,10 +4,10 @@ const knex = require("../db/knex.js");
 module.exports = {
   index: function(req, res) {
     knex('agents')
-      .where('id', req.params.id)
+      .where('id', req.session.user_id)
         .then((agents)=>{
           knex('appointments')
-            .where('agent_id', req.params.id)
+            .where('agent_id', req.session.user_id)
             .where('status', 'unconfirmed')
             .then((appointments)=>{
               res.render('appointments', {agents:agents[0], appointments:appointments});
@@ -17,10 +17,10 @@ module.exports = {
 
     confirmed: function(req, res) {
       knex('agents')
-        .where('id', req.params.id)
+        .where('id', req.session.user_id)
         .then((agents)=>{
           knex('appointments')
-            .where('agent_id', req.params.id)
+            .where('agent_id', req.session.user_id)
             .where('status', 'confirmed')
             .then((appointments)=>{
               res.render('appointments', {agents:agents[0], appointments:appointments});
@@ -30,10 +30,10 @@ module.exports = {
 
     completed: function(req, res) {
       knex('agents')
-        .where('id', req.params.id)
+        .where('id', req.session.user_id)
         .then((agents)=>{
           knex('appointments')
-            .where('agent_id', req.params.id)
+            .where('agent_id', req.session.user_id)
             .where('status', 'completed')
             .then((appointments)=>{
               res.render('appointments', {agents:agents[0], appointments:appointments});
