@@ -22,6 +22,6 @@ module.exports = function(app){
   app.get('/appointments/:id', appts.index);
   app.get('/confirmed_appointments/:id', appts.confirmed);
   app.get('/completed_appointments/:id', appts.completed);
-  app.get('appointments/view/:id', appts.view);
+  app.get('/appointments/view/:id', appts.view);
   app.post('/logout', agentLogin.logout);
 }
