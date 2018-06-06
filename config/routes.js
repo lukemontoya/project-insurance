@@ -4,6 +4,7 @@ const agentLogin = require("../controllers/login.js");
 const agentProfile = require("../controllers/profile.js");
 const profileEdit = require("../controllers/edit.js");
 const appts = require("../controllers/appointments.js");
+const admin = require("../controllers/admin.js")
 const authMiddleware = (req, res, next) => req.session.user_id ? next() : res.redirect('/agent/login');
 module.exports = function(app){
 
@@ -15,6 +16,8 @@ module.exports = function(app){
   app.get('/agent/login', agentLogin.index);
   app.post('/register', agentLogin.register);
   app.post('/login', agentLogin.login);
+  app.get('/admin', admin.login);
+  app.post('/delete/agent/:id', admin.deleteAgent);
   app.use(authMiddleware);
 
   app.post('/sendmessage', agentProfile.send)

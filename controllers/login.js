@@ -21,10 +21,8 @@ module.exports = {
         } else {
             res.render("login", { agent: undefined, error: req.session.error });
         }
-
-
-        
     },
+
     register: function (req, res) {
         let uploadData = {
             Key: req.body.email,
@@ -55,7 +53,6 @@ module.exports = {
                     req.session.save(() => {
                         res.redirect('/agent/login');
                     })
-
                 })
                     .catch(() => {
                         req.session.error = [];
@@ -65,16 +62,15 @@ module.exports = {
                         })
                     })
             })
-
         } else {
             req.session.error = [];
             req.session.error.push('Password error. Please try again.');
             req.session.save(() => {
                 res.redirect('/agent/login');
             })
-
         }
     },
+
     login: function (req, res) {
         knex('agents').where('agent_email', req.body.email).then(users => {
             let user = users[0];
@@ -91,21 +87,20 @@ module.exports = {
                     req.session.save(() => {
                         res.redirect('/agent/login');
                     })
-
                 }
             })
-
         }).catch(err => {
             req.session.error = [];
             req.session.error.push('Invalid login. Please try again.');
             req.session.save(() => {
                 res.redirect('/agent/login');
             })
-
         })
     },
+
     logout: function (req, res) {
         req.session.destroy();
         res.redirect('/agent/login');
     }
+
 }
