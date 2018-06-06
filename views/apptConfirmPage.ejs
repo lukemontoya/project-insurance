@@ -46,7 +46,7 @@
 
 
         <% if(appointments[0].status === "unconfirmed") { %>
-          <form action="/confirm" method="post">
+          <form action="/confirm/<%= appointments[0].id %>" method="post">
             <button type="submit" name="button">Confirm Appointment</button>
           </form>
         <% } %>

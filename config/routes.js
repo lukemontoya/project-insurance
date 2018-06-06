@@ -33,7 +33,7 @@ module.exports = function(app){
   app.get('/completed_appointments', appts.completed);
   app.get('/appointments/view/:id', appts.view);
   app.post('/appointments/view/:id', appts.createComment);
-  app.post('/confirm', appts.sendConfirm)
+  app.post('/confirm/:id', appts.sendConfirm)
 
   app.post('/logout', agentLogin.logout);
 }
