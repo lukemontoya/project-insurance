@@ -20,7 +20,7 @@ module.exports = function(app){
   app.post('/delete/agent/:id', admin.deleteAgent);
   app.use(authMiddleware);
 
-  app.post('/sendmessage', agentProfile.send)
+  
 
   app.get('/profile', agentProfile.index);
   app.get('/profile/edit', profileEdit.index);
@@ -30,19 +30,9 @@ module.exports = function(app){
   app.get('/completed_appointments', appts.completed);
   app.get('/appointments/view/:id', appts.view);
   app.post('/appointments/view/:id', appts.createComment);
+  app.post('/confirm', appts.sendConfirm)
 
   app.post('/logout', agentLogin.logout);
 }
 
-// using SendGrid's v3 Node.js Library
-// https://github.com/sendgrid/sendgrid-nodejs
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-// const msg = {
-//   to: 'test@example.com',
-//   from: 'test@example.com',
-//   subject: 'Sending with SendGrid is Fun',
-//   text: 'and easy to do anywhere, even with Node.js',
-//   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-// };
-// sgMail.send(msg);
+
