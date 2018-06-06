@@ -39,5 +39,13 @@ module.exports = {
               res.render('appointments', {agents:agents[0], appointments:appointments});
           });
         })
+      },
+
+      view: function(req, res) {
+        knex('appointments')
+          .where('id', req.params.id)
+          .then((appointments)=>{
+            res.render('apptConfirmPage', {appointments:appointments});
+          });
       }
 }
