@@ -5,3 +5,4 @@ knex_reset\.sh
 config\.json
 
 package-lock\.json
+sendgrid.env
