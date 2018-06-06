@@ -1,6 +1,7 @@
+const express = require("express");
+const app = express();
 const knex = require("../db/knex.js");
 const hasher = require("../config/hasher");
-const app = express();
 const AWS = require('aws-sdk');
 const fileUpload = require('express-fileupload');
 app.use(fileUpload());
@@ -16,6 +17,18 @@ module.exports = {
             })
     },
     update: function (req, res) {
+        let uploadData = {
+            Key: req.body.email,
+            Body: req.files.upload.data,
+            ContentType: req.files.upload.mimetype,
+            ACL: 'public-read'
+        }
+        s3Bucket.putObject(uploadData, function (err, data) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+        })
         if (req.body.password && (req.body.password === req.body.confirm)) {
             
             hasher.hash(req.body).then(user => {
@@ -24,7 +37,7 @@ module.exports = {
                     agent_name: user.name,
                     agent_email: user.email,
                     bio: user.bio,
-                    IMG_url: user.img_url,
+                    IMG_url: baseAWSURL + uploadData.Key,
                     location: user.location,
                     home: user.home ? user.home : false,
                     car: user.car ? user.car : false,
