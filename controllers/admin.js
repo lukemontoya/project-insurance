@@ -12,6 +12,18 @@ module.exports = {
       });
     },
 
+    appointmentsView: function(req, res)  {
+      knex('agents')
+      .where('id', req.params.id)
+        .then((agents)=>{
+          knex('appointments')
+            .where('agent_id', req.params.id)
+            .then((appointments)=>{
+              res.render('adminViewAppts', {agents:agents, appointments:appointments});
+            })
+        })
+    },
+
     deleteAgent: function(req, res) {
       knex('agents')
       .where('id', req.params.id)
