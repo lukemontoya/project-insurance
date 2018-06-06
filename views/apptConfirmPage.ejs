@@ -63,3 +63,20 @@
         <% for(let i = 0; i < appointments.length; i++) { %>
       </div>
         <% } %>
+
+      <div class="comments">
+         <h2>Comments:</h2>
+         <% for(let i = 0; i < comments.length; i++) { %>
+         <p><%= comments[i].agent_comments %></p>
+         <% } %>
+       </div>
+
+       <form action="/appointments/view/<%=appointments[0].id %>" method="post">
+         <input type="text"  name="comments" placeholder="Enter a love note"><br>
+         <button type="submit" name="button">Submit</button>
+       </form>
+
+    </div>
+
+  </body>
+</html>

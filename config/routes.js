@@ -26,6 +26,8 @@ module.exports = function(app){
   app.get('/confirmed_appointments/:id', appts.confirmed);
   app.get('/completed_appointments/:id', appts.completed);
   app.get('/appointments/view/:id', appts.view);
+  app.post('/appointments/view/:id', appts.createComment);
+
   app.post('/logout', agentLogin.logout);
 }
 

@@ -45,8 +45,28 @@ module.exports = {
         knex('appointments')
           .where('id', req.params.id)
           .then((appointments)=>{
-            // res.json(appointments)
-            res.render('apptConfirmPage', {appointments:appointments});
+            knex('comments')
+              .where('appt_id', req.params.id)
+              .then((comments)=>{
+                // res.json(appointments)
+                res.render('apptConfirmPage', {appointments:appointments, comments:comments});
+              })
+
           });
+      },
+
+      createComment: function( req, res) {
+        knex('appointments')
+          .where('id', req.params.id)
+          .then((appointments)=>{
+            knex('comments')
+              .insert({
+                agent_comments: req.body.agent_comments,
+                appt_id: req.params.id
+              }).then(()=>{
+                res.redirect('/appointments/view/'+req.params.id);
+            });
+          })
+
       }
 }
