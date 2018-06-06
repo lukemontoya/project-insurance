@@ -44,6 +44,11 @@
         <form action="/view/agent/<%= agents[i].id %> " method="get">
             <button type="submit" name="button">Profile</button>
         </form> <br>
+
+        <form action="/view/agent/appointments/<%= agents[i].id %> " method="get">
+            <button type="submit" name="button">Appointments</button>
+        </form> <br>
+        
         <form action="/delete/agent/<%=agents[i].id%> " method="post">
             <button type="submit" name="button">Delete</button>
         </form>

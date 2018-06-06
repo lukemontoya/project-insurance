@@ -75,7 +75,13 @@ module.exports = {
         knex('agents').where('agent_email', req.body.email).then(users => {
             let user = users[0];
             hasher.check(user, req.body).then(isMatch => {
-                if (isMatch) {
+              if (isMatch && user.admin) {
+                req.session.user_id = user.id;
+                req.session.error = [];
+                req.session.save(() => {
+                    res.redirect('/admin');
+                  })
+              } else if (isMatch) {
                     req.session.user_id = user.id;
                     req.session.error = [];
                     req.session.save(() => {

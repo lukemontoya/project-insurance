@@ -16,9 +16,12 @@ module.exports = function(app){
   app.get('/agent/login', agentLogin.index);
   app.post('/register', agentLogin.register);
   app.post('/login', agentLogin.login);
-  app.get('/admin', admin.login);
-  app.post('/delete/agent/:id', admin.deleteAgent);
+
   app.use(authMiddleware);
+
+  app.get('/admin', admin.login);
+  app.get('/view/agent/appointments/:id', admin.appointmentsView);
+  app.post('/delete/agent/:id', admin.deleteAgent);
 
   app.post('/sendmessage', agentProfile.send)
 
