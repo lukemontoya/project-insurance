@@ -67,6 +67,5 @@ module.exports = {
                 res.redirect('/appointments/view/'+req.params.id);
             });
           })
-
       }
 }
