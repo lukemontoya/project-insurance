@@ -81,7 +81,7 @@ module.exports = {
           to: 'chris.hervois@gmail.com',
           from: 'admin@insurance.com',
           subject: 'Here is your appointment confirmation',
-          text: `Hello, ${appt.client_name}, your appointment with ${appt.agent_name} has been confirmed for ${appt.date}. Have a nice day! Or don't. I dont care`,
+          text: `Hello, ${appt.client_name}, your appointment with ${appt.agent_name} has been confirmed for ${appt.date}. Have a nice day!`,
           // html: '<strong></strong>',
         };
         sgMail.send(msg).then(() => {
