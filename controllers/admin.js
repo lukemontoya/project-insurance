@@ -33,7 +33,7 @@ module.exports = {
             .where('agent_id', req.params.id)
             .where('status', 'confirmed')
             .then((appointments)=>{
-              res.render('adminViewAppts', {agents:agents, appointments:appointments});
+              res.render('view/agent/appointments/:id');
             })
         })
     },
@@ -49,6 +49,20 @@ module.exports = {
               res.render('adminViewAppts', {agents:agents, appointments:appointments});
             })
         })
+    },
+
+    deleteAppt: function(req, res) {
+      knex('appointments')
+        .where('id', req.params.id)
+        .del()
+          .then((appointments)=>{
+            knex('agents')
+             .where('id', appointments.agent_id)
+             .then((agents)=>{
+               res.render('/view/agent/appointments/'+req.params.id)
+
+             })
+          })
     },
 
 

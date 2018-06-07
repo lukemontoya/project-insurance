@@ -48,11 +48,12 @@ module.exports = {
         knex('comments')
           .where('appt_id', req.params.id)
           .then((comments) => {
-            // res.json(appointments)
-            
-            res.render('apptConfirmPage', { appointments: appointments, comments: comments });
+            knex('agents')
+              .where('id', req.session.user_id)
+              .then((agents)=>{
+                res.render('apptConfirmPage', { appointments: appointments, comments: comments, agents:agents });
+              })
           })
-
       });
   },
 
@@ -103,9 +104,9 @@ module.exports = {
       })
 
 
-    
-      
 
-    
+
+
+
   }
 }

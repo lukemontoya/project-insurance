@@ -57,7 +57,11 @@
 
 <body>
   <header role="banner">
+    <% if(agents.admin !== true) { %>
   	<h2>Welcome <%= agents.agent_name %></h2>
+    <% } else { %>
+      <h2>Admin Review</h2>
+       <%}%>
     <div class="container">
       <div class="row">
           <form action="/appointments"method="get">

@@ -26,8 +26,9 @@ module.exports = function(app){
   app.get('/confirmed_appointments/:id', admin.confirmed);
   app.get('/completed_appointments/:id', admin.completed);
   app.post('/delete/agent/:id', admin.deleteAgent);
+  app.post('/delete/:id', admin.deleteAppt);
 
-  
+
 
   app.get('/profile', agentProfile.index);
   app.get('/profile/edit', profileEdit.index);
@@ -41,5 +42,3 @@ module.exports = function(app){
   app.post('/complete/:id', appts.complete)
   app.post('/logout', agentLogin.logout);
 }
-
-
