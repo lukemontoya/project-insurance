@@ -9,19 +9,12 @@ const baseAWSURL = "https://s3.amazonaws.com/q2insuranceproject/"
 
 module.exports = {
     index: function (req, res) {
-        res.render('register');
-        // if (!req.session.error) {
-        //     req.session.error = [];
-        // }
-        // if (req.session.user_id) {
-        //     knex.select('agent_email').from('agents')
-        //         .where('id', req.session.user_id)
-        //         .then(result => {
-        //             res.render("login", { agent: result[0], error: req.session.error });
-        //         })
-        // } else {
-        //     res.render("login", { agent: undefined, error: req.session.error });
-        // }
+        if (!req.session.error) {
+            req.session.error = [];
+        }
+        
+        res.render("register", { error: req.session.error });
+        
     },
 
     register: function (req, res) {
@@ -59,7 +52,7 @@ module.exports = {
                         req.session.error = [];
                         req.session.error.push('Invalid Registration. Please try again.');
                         req.session.save(() => {
-                            res.redirect('/agent/login');
+                            res.redirect('/agent/register');
                         })
                     })
             })
@@ -67,7 +60,7 @@ module.exports = {
             req.session.error = [];
             req.session.error.push('Password error. Please try again.');
             req.session.save(() => {
-                res.redirect('/agent/login');
+                res.redirect('/agent/register');
             })
         }
     },
