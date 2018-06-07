@@ -1,60 +1,121 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
+
 <body>
-    <form enctype="multipart/form-data" action="/profile/update" method="post">
-    
-        <input class="form-control form-control-lg" type="text" name="name" placeholder="Name" value="<%= agent.agent_name %>">
-        <input class="form-control form-control-lg" type="email" name="email" placeholder="Email" value="
-        <%= agent.agent_email %>">
-        <textarea name="bio" placeholder="Bio" cols="30" rows="10"><%= agent.bio %></textarea>
-        <div class="form-group">
-            <label for="exampleFormControlFile1">Upload Profile Image</label>
-            <input type="file" name="upload" accept=".jpg, .jpeg, .png" class="form-control-file" id="exampleFormControlFile1">
+    <div class="container" style="padding-top: 60px;">
+        <h1 class="page-header">Edit Profile</h1>
+        <div class="row">
+            <!-- left column -->
+            <form enctype="multipart/form-data" action="/profile/update" method="post" class="form-horizontal" role="form">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="text-center">
+                    <img src="<%= agent.IMG_url %>" class="avatar img-circle img-thumbnail" alt="avatar">
+                    <h6>Upload a different photo...</h6>
+                    <input type="file" name="upload" accept=".jpg, .jpeg, .png" class="text-center center-block well well-sm">
+                </div>
+            </div>
+            <!-- edit form column -->
+            <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+
+                <h3>Personal info</h3>
+                <!-- <form enctype="multipart/form-data" action="/profile/update" method="post" class="form-horizontal" role="form"> -->
+                    <!-- <div class="text-center">
+                        <img src="<%= agent.IMG_url %>" class="avatar img-circle img-thumbnail" alt="avatar">
+                        <h6>Upload a different photo...</h6>
+                        <input type="file" name="upload" accept=".jpg, .jpeg, .png" class="text-center center-block well well-sm">
+                    </div> -->
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Name:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" value="<%= agent.agent_name %>"  name="name" type="text">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" value="<%= agent.agent_email %>" name="email" type="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Location:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" value="<%= agent.location %>" name="location" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Bio:</label>
+                        <div class="col-md-8">
+                            <textarea name="bio" placeholder="Bio" cols="67" rows="7"><%= agent.bio %></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Password:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="password" type="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Confirm password:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" name="confirm" type="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check col-md-8">
+                            <%if (agent.home) {%>
+                                <input class="form-check-input" type="checkbox" name="home" checked>
+                                <%} else {%>
+                                    <input class="form-check-input" type="checkbox" name="home">
+                                    <%}%>
+                        
+                                        <label class="form-check-label" for="home">
+                                            Home
+                                        </label>
+                        </div>
+                        <div class="form-check col-md-8">
+                            <%if (agent.car) {%>
+                                <input class="form-check-input" type="checkbox" name="car" checked>
+                                <%} else {%>
+                                    <input class="form-check-input" type="checkbox" name="car">
+                                    <%}%>
+                        
+                                        <label class="form-check-label" for="car">
+                                            Car
+                                        </label>
+                        </div>
+                        <div class="form-check col-md-8">
+                            <%if (agent.life) {%>
+                                <input class="form-check-input" type="checkbox" name="life" checked>
+                                <%} else {%>
+                                    <input class="form-check-input" type="checkbox" name="life">
+                                    <%}%>
+                        
+                                        <label class="form-check-label" for="life">
+                                            Life
+                                        </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                            <input class="btn btn-primary" value="Save Changes" type="submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <input class="form-control form-control-lg" type="text" name="location" placeholder="Location" value="<%= agent.location %>">
-        <small id="emailHelp" class="form-text text-muted">Please check all applicable</small>
-        <div class="form-check">
-            <%if (agent.home) {%>
-                <input class="form-check-input" type="checkbox" name="home" checked>
-            <%} else {%>
-                <input class="form-check-input" type="checkbox" name="home">
-            <%}%>
-            
-            <label class="form-check-label" for="home">
-                Home
-            </label>
-        </div>
-        <div class="form-check">
-            <%if (agent.car) {%>
-                <input class="form-check-input" type="checkbox" name="car" checked>
-                <%} else {%>
-                    <input class="form-check-input" type="checkbox" name="car">
-                    <%}%>
-                    
-                    <label class="form-check-label" for="car">
-                        Car
-                    </label>
-        </div>
-        <div class="form-check">
-            <%if (agent.life) {%>
-                <input class="form-check-input" type="checkbox" name="life" checked>
-                <%} else {%>
-                    <input class="form-check-input" type="checkbox" name="life">
-                    <%}%>
-                    
-                    <label class="form-check-label" for="life">
-                        Life
-                    </label>
-        </div>
-        <input class="form-control form-control-lg" type="password" name="password" placeholder="Password">
-        <input class="form-control form-control-lg" type="password" name="confirm" placeholder="Confirm Password">
-        <br>
-        <button type="submit" class="btn btn-primary">Confirm Changes</button>
-    </form>
+    </div>
 </body>
+
 </html>
