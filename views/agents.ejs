@@ -1,51 +1,222 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Insurance Agents</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <style media="screen">
-      body{
-        display: block;
-        font-family: Raleway;
-        font-size: 1EM;
-        text-align: center;
-      }
-      .container{
-        display: flex;
-        flex-wrap: wrap;
-      }
-      .agents{
-        border: 2px solid black;
-        flex: 1;
-        margin: 10px;
-        padding: 10px;
-      }
-      a {
-        text-decoration: none;
-        color: black;
-        border: 2px solid black;
-        margin: 5px;
-        padding: 5px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Agents</h1>
-    <a href="/agent/login">Agent Login</a>
 
+<head>
+  <meta charset="utf-8">
+  <title>Our Agents</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+    
+
+    @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+    #team {
+      background: #eee !important;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #108d6f;
+      border-color: #108d6f;
+      box-shadow: none;
+      outline: none;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background-color: #007b5e;
+      border-color: #007b5e;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    section .section-title {
+      text-align: center;
+      color: #007b5e;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+    }
+
+    #team .card {
+      border: none;
+      background: #ffffff;
+    }
+
+    .image-flip:hover .backside,
+    .image-flip.hover .backside {
+      -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      -o-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+      border-radius: .25rem;
+    }
+
+    .image-flip:hover .frontside,
+    .image-flip.hover .frontside {
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+    }
+
+    .mainflip {
+      -webkit-transition: 1s;
+      -webkit-transform-style: preserve-3d;
+      -ms-transition: 1s;
+      -moz-transition: 1s;
+      -moz-transform: perspective(1000px);
+      -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      transition: 1s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .frontside {
+      position: relative;
+      -webkit-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      z-index: 2;
+      margin-bottom: 30px;
+    }
+
+    .backside {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: white;
+      -webkit-transform: rotateY(-180deg);
+      -moz-transform: rotateY(-180deg);
+      -o-transform: rotateY(-180deg);
+      -ms-transform: rotateY(-180deg);
+      transform: rotateY(-180deg);
+      -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+      -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+      box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    }
+
+    .frontside,
+    .backside {
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transition: 1s;
+      -webkit-transform-style: preserve-3d;
+      -moz-transition: 1s;
+      -moz-transform-style: preserve-3d;
+      -o-transition: 1s;
+      -o-transform-style: preserve-3d;
+      -ms-transition: 1s;
+      -ms-transform-style: preserve-3d;
+      transition: 1s;
+      transform-style: preserve-3d;
+    }
+
+    .frontside .card,
+    .backside .card {
+      min-height: 312px;
+    }
+
+    .backside .card a {
+      font-size: 18px;
+      color: #007b5e !important;
+    }
+
+    .frontside .card .card-title,
+    .backside .card .card-title {
+      color: #007b5e !important;
+    }
+
+    .frontside .card .card-body img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="team" class="pb-5">
     <div class="container">
-      <% for(var i = 0; i < agents.length; i++){ %>
-      <div class="agents">
-        <h2><%= agents[i].agent_name %></h2>
-        <img src="<%= agents[i].IMG_url %>" alt="" height=300px>
-      <div class="left">
-        <a href="/view/agent/<%= agents[i].id %>">Profile</a>
-        <a href="/book/agent/<%=agents[i].id%> ">Book</a>
-      </div>
-      </div>
-      <% } %>
-    </div>
+      <h5 class="section-title h1">OUR AGENTS</h5>
+      <div class="row">
+        <% for(var i = 0; i < agents.length; i++){ %>
+          <!-- Agent -->
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+              <div class="mainflip">
+                <div class="frontside">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <p>
+                        <img class=" img-fluid" src="<%= agents[i].IMG_url %>" alt="card image">
+                      </p>
+                      <h4 class="card-title">
+                        <%= agents[i].agent_name %>
+                      </h4>
+                      <p class="card-text">
+                        <%= agents[i].location %>
+                      </p>
+                      <ul class="list-inline">
+                        <% if(agents[i].home !=false) { %>
+                          <li class="list-inline-item">
+                            <i class="fa fa-home fa-2x"></i>
+                          </li>
+                          <% } %>
 
-  </body>
+                            <% if(agents[i].car !=false) { %>
+                              <li class="list-inline-item">
+                                <i class="fa fa-car fa-2x"></i>
+                              </li>
+                              <% } %>
+
+                                <% if(agents[i].life !=false) { %>
+                                  <li class="list-inline-item">
+                                    <i class="fa fa-heartbeat fa-2x"></i>
+                                  </li>
+                                  <% } %>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="backside">
+                  <div class="card">
+                    <div class="card-body text-center mt-4">
+                      <h4 class="card-title">
+                        <%= agents[i].agent_name %>
+                      </h4>
+                      <p class="card-text">
+                        <%= agents[i].bio %>
+                      </p>
+
+                      <form action="/view/agent/
+                      <%= agents[i].id %>" method="get">
+                        <button type="submit" class="btn btn-info">Profile</button>
+                      </form>
+                      <br>
+                      <form action="/book/agent/
+                      <%=agents[i].id%>" method="get">
+                        <button type="submit" class="btn btn-info">Book</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Agent -->
+          <% } %>
+
+      </div>
+    </div>
+  </section>
+  <!-- Team -->
+</body>
+
 </html>
