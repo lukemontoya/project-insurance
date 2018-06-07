@@ -70,25 +70,25 @@ module.exports = {
       })
   },
   sendConfirm: function (req, res) {
-    // knex.select('appointments.*', 'agents.agent_name')
-    //   .from('appointments')
-    //   .where('appointments.id', req.params.id)
-    //   .join('agents', 'appointments.agent_id', 'agents.id')
-    //   .then(data => {
-    //     let appt = data[0];
-    //     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    //     const msg = {
-    //       to: 'chris.hervois@gmail.com',
-    //       from: 'admin@insurance.com',
-    //       subject: 'Here is your appointment confirmation',
-    //       text: `Hello, ${appt.client_name}, your appointment with ${appt.agent_name} has been confirmed for ${appt.date}. Have a nice day!`,
-    //       // html: '<strong></strong>',
-    //     };
-    //     sgMail.send(msg).then(() => {
-    //       res.redirect('/appointments');
-    //     })
-    //   })
-    
+    knex.select('appointments.*', 'agents.agent_name')
+      .from('appointments')
+      .where('appointments.id', req.params.id)
+      .join('agents', 'appointments.agent_id', 'agents.id')
+      .then(data => {
+        let appt = data[0];
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+          to: 'chris.hervois@gmail.com',
+          from: 'admin@insurance.com',
+          subject: 'Here is your appointment confirmation',
+          text: `Hello, ${appt.client_name}, your appointment with ${appt.agent_name} has been confirmed for ${appt.date}. Have a nice day!`,
+          // html: '<strong></strong>',
+        };
+        sgMail.send(msg).then(() => {
+          res.redirect('/appointments');
+        })
+      })
+
       
 
     

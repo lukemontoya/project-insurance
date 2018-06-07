@@ -1,52 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Insurance Agents</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <style media="screen">
-      body{
-        display: block;
-        font-family: Raleway;
-        font-size: 1EM;
-        text-align: center;
-      }
-      .container{
-        display: flex;
-        flex-wrap: wrap;
-      }
-      .agents{
-        border: 2px solid black;
-        flex: 1;
-        margin: 10px;
-        padding: 10px;
-      }
-      a {
-        text-decoration: none;
-        color: black;
-        border: 2px solid black;
-        margin: 5px;
-        padding: 5px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Agents</h1>
-    <a href="/agent/login">Agent Login</a>
-    <a href="/agent/register">Register</a>
 
-    <div class="container">
-      <% for(var i = 0; i < agents.length; i++){ %>
-      <div class="agents">
-        <h2><%= agents[i].agent_name %></h2>
-        <img src="<%= agents[i].IMG_url %>" alt="" height=300px>
-      <div class="left">
-        <a href="/view/agent/<%= agents[i].id %>">Profile</a>
-        <a href="/book/agent/<%=agents[i].id%> ">Book</a>
-      </div>
-      </div>
-      <% } %>
+<head>
+  <meta charset="utf-8">
+  <title>Insurance Agents</title>
+  <link rel="stylesheet" href="./styles/agents.css">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> -->
+  <style>
+    .src-image {
+      display: none;
+    }
+
+    .card {
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #CCC;
+      border-radius: 8px;
+      text-align: center;
+      padding: 0;
+      background-color: #284c79;
+      color: rgb(136, 172, 217);
+    }
+
+    .card .header-bg {
+      /* This stretches the canvas across the entire hero unit */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      /*   border-bottom: 1px #FFF solid; */
+      /* This positions the canvas under the text */
+      z-index: 1;
+    }
+
+    .card .avatar {
+      position: relative;
+      margin-top: 15px;
+      z-index: 100;
+    }
+
+    .card .avatar img {
+      width: 100px;
+      height: 100px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      border: 5px solid rgba(0, 0, 30, 0.8);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      
+        <div class="col-sm-3">
+          <% for(var i = 0; i < agents.length; i++){ %>
+          <div class="card">
+            <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+            <div class="avatar">
+              <img src="<%= agents[i].IMG_url %>">
+            </div>
+            <div class="content">
+              <p>
+                <%= agents[i].agent_name %>
+                  <br>
+                  <%= agents[i].location %>
+              </p>
+              <p>
+                <form action="/view/agent/<%= agents[i].id %>" method="get">
+                  <button type="submit">Profile</button>
+                </form>
+                <form action="/book/agent/
+                            <%=agents[i].id%>" method="get">
+                  <button type="submit">Book</button>
+                </form>
+              </p>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      
     </div>
+  </div>
+  
+</body>
 
-  </body>
 </html>
