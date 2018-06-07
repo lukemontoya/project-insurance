@@ -73,7 +73,7 @@
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
       position: absolute;
       z-index: 2;
-      left: 450px;
+      left: 500px;
       bottom: 10px;
       animation: animainfos 0.5s cubic-bezier(0.425, 1.04, 0.47, 1.105) 0.75s forwards;
     }
@@ -172,61 +172,28 @@
           </h3>
           <p class="bio">
             <%= agents[0].bio %>
-          </p>
+          </p> <br>
+          <form action="/book/agent/<%= agents[0].id %>" method="get"> <button type="submit" class="btn btn-info">Book It!</button> </form>
         </div>
       </div>
     </div>
     <div class="badgescard">
-      <!-- <ul> -->
+      
         <%if (agents[0].home) {%>
-          <!-- <li>Home</li> -->
+          
           <i class="fa fa-home fa-5x"></i>
           <%}%>
             <%if (agents[0].car) {%>
-              <!-- <li>Car</li> -->
+              
               <i class="fa fa-car fa-5x"></i>
               <%}%>
                 <%if (agents[0].life) {%>
-                  <!-- <li>Life</li> -->
+                 
                   <i class="fa fa-heartbeat fa-5x"></i>
                   <%}%>
-      <!-- </ul> -->
+      
     </div>
   </div>
-
-
-
-
-
-
-  <!-- <h1>Your Potential Future Agent Profile</h1>
-    <div class="container">
-      <% for(var i = 0; i < agents.length; i++){ %>
-      <div class="agent">
-        <h2><%= agents[i].agent_name %></h2>
-        <img src="<%= agents[i].IMG_url %>" alt="" height=300px>
-        <p>About Me: <%= agents[i].bio %></p>
-        <p>Location: <%= agents[i].location %></p>
-
-        <% if(agents[i].home !=false) { %>
-          <p>Home</p>
-        <% } %>
-
-        <% if(agents[i].car !=false) { %>
-          <p>Car</p>
-        <% } %>
-
-        <% if(agents[i].life !=false) { %>
-          <p>Life</p>
-        <% } %>
-
-        <div class="left">
-          <a href="/book/agent/<%=agents[i].id%> ">Book</a>
-        </div>
-
-      </div>
-      <% } %>
-    </div> -->
 
 </body>
 
