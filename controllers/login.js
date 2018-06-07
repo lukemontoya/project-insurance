@@ -23,53 +23,7 @@ module.exports = {
         }
     },
 
-    register: function (req, res) {
-        let uploadData = {
-            Key: req.body.email,
-            Body: req.files.upload.data,
-            ContentType: req.files.upload.mimetype,
-            ACL: 'public-read'
-        }
-        s3Bucket.putObject(uploadData, function(err, data) {
-            if(err){
-                console.log(err);
-                return;
-            }
-        })
-        if (req.body.password && (req.body.password === req.body.confirm)) {
-            hasher.hash(req.body).then(user => {
-                knex('agents').insert({
-                    agent_name: user.name,
-                    agent_email: user.email,
-                    bio: user.bio,
-                    IMG_url: baseAWSURL + uploadData.Key,
-                    location: user.location,
-                    home: user.home,
-                    car: user.car,
-                    life: user.life,
-                    password: user.password
-                }).then(() => {
-                    req.session.error = [];
-                    req.session.save(() => {
-                        res.redirect('/agent/login');
-                    })
-                })
-                    .catch(() => {
-                        req.session.error = [];
-                        req.session.error.push('Invalid Registration. Please try again.');
-                        req.session.save(() => {
-                            res.redirect('/agent/login');
-                        })
-                    })
-            })
-        } else {
-            req.session.error = [];
-            req.session.error.push('Password error. Please try again.');
-            req.session.save(() => {
-                res.redirect('/agent/login');
-            })
-        }
-    },
+    
 
     login: function (req, res) {
         knex('agents').where('agent_email', req.body.email).then(users => {
