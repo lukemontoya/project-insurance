@@ -3,14 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>Confirmation</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <style>
+      body {
+        background-color: #eee;
+      }
+    </style>
   </head>
   <body>
-
-    <h1>This is what in the industry is called a Confirmation Note</h1>
-    <div class="">
-      <p>Thank you, <%= appointments[0].client_name %>, for choosing <%= agents[0].agent_name %>.
-      An email will be sent to <%= appointments[0].client_email %> for your appointment on <%= appointments[0].date %> once confirmed by <%= agents[0].agent_name %>.<p>
+    <div class="jumbotron">
+      <h1 class="display-4">This is what in the industry is called a Confirmation Note</h1>
+      <p class="lead">Thank you,
+      <%= appointments[0].client_name %>, for choosing
+        <%= agents[0].agent_name %>. </p>
+      <hr class="my-4">
+      <p>An email will be sent to
+      <%= appointments[0].client_email %> for your appointment on
+        <%= appointments[0].date %> once confirmed by
+          <%= agents[0].agent_name %>.</p>
+      <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
     </div>
-    <a href="/">There is no place like home.</a>
+
+    
   </body>
 </html>
