@@ -4,22 +4,33 @@
     <meta charset="utf-8" />
     <title>Register</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <style>
+        body {
+            background-color: #eee;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
-                <h1>Register</h1>
+                <h1>SIGN UP</h1>
         
                 <form enctype="multipart/form-data" action="/register" method="post">
                     <input class="form-control form-control-lg" type="text" name="name" placeholder="Name">
                     <input class="form-control form-control-lg" type="email" name="email" placeholder="Email">
-                    <textarea name="bio" placeholder="Bio" cols="30" rows="10"></textarea>
+                    <input class="form-control form-control-lg" type="text" name="location" placeholder="Location">
+                    <input class="form-control form-control-lg" type="password" name="password" placeholder="Password">
+                    <input class="form-control form-control-lg" type="password" name="confirm" placeholder="Confirm Password">
+                    <textarea name="bio" placeholder="Tell us a little about yourself..." cols="64" rows="7"></textarea>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Upload Profile Image</label>
                         <input type="file" name="upload" accept=".jpg, .jpeg, .png" class="form-control-file" id="exampleFormControlFile1">
                     </div>
-                    <input class="form-control form-control-lg" type="text" name="location" placeholder="Location">
+                    
                     <small id="emailHelp" class="form-text text-muted">Please check all applicable</small>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="true" name="home">
@@ -39,10 +50,9 @@
                             Life
                         </label>
                     </div>
-                    <input class="form-control form-control-lg" type="password" name="password" placeholder="Password">
-                    <input class="form-control form-control-lg" type="password" name="confirm" placeholder="Confirm Password">
+                    
                     <br>
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary">Good To Go!</button>
                 </form>
             </div>
         </div>
