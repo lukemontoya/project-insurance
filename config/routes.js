@@ -28,8 +28,6 @@ module.exports = function(app){
   app.post('/delete/agent/:id', admin.deleteAgent);
   app.post('/delete/:id', admin.deleteAppt);
 
-
-
   app.get('/profile', agentProfile.index);
   app.get('/profile/edit', profileEdit.index);
   app.post('/profile/update', profileEdit.update);

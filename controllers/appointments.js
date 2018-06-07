@@ -51,6 +51,7 @@ module.exports = {
             knex('agents')
               .where('id', req.session.user_id)
               .then((agents)=>{
+                console.log(agents, appointments)
                 res.render('apptConfirmPage', { appointments: appointments, comments: comments, agents:agents });
               })
           })

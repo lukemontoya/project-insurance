@@ -52,19 +52,17 @@ module.exports = {
     },
 
     deleteAppt: function(req, res) {
-      knex('appointments')
-        .where('id', req.params.id)
-        .del()
-          .then((appointments)=>{
-            knex('agents')
-             .where('id', appointments.agent_id)
-             .then((agents)=>{
-               res.render('/view/agent/appointments/'+req.params.id)
-
-             })
+      knex('agents')
+        .where('id', req.session.user_id)
+        .then((agents)=>{
+          knex('appointments')
+            .where('id', req.params.id)
+            .del()
+              .then((appointments)=>{
+               res.redirect('/admin')
+               })
           })
     },
-
 
     deleteAgent: function(req, res) {
       knex('agents')

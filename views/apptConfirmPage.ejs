@@ -26,8 +26,14 @@
         font-weight: 200;
       }
       }
-
+      .card-block{
+      padding: 1EM;
+      }
+      .comments{
+        padding: 1EM;
+      }
       .card {
+      margin-left: 7EM;
       background: #fff;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 
@@ -51,6 +57,8 @@
         display:inline-flex;
       }
 
+
+
     </style>
 
 </head>
@@ -70,10 +78,6 @@
                 <p class="card-text">Email: <%= appointments[0].client_email %></p>
                 <p class="card-text">Date: <%= appointments[0].date %></p>
                 <p class="card-text">Comment: <%= appointments[0].client_comment %></p>
-              </div>
-              <% } %>
-
-
 
               <% if(appointments[0].status === "unconfirmed") { %>
                 <form action="/confirm/<%= appointments[0].id %>" method="post">
@@ -85,27 +89,28 @@
                   <button type="submit" name="button">Complete Appointment</button>
                 </form>
               <% } %>
-              <% if(appointments[0].status === "completed" && agents.admin === true) { %>
+              <% if(appointments[0].status == "completed" && agents[0].admin) { %>
                 <form action="/delete/<%= appointments[0].id %>" method="post">
                   <button type="submit" name="button">Delete Appointment</button>
                 </form>
               <% } %>
-
-
             </div>
-            
+            <hr>
 
-            <div class="comments">
-               <h2>Comments:</h2>
-               <% for(let i = 0; i < comments.length; i++) { %>
-               <p><%= comments[i].agent_comments %></p>
-               <% } %>
+              <div class="comments">
+                 <h2>Comments:</h2>
+                 <% for(let i = 0; i < comments.length; i++) { %>
+                 <p><%= comments[i].agent_comments %></p>
+                 <% } %>
+
+                 <form action="/appointments/view/<%=appointments[0].id %>" method="post">
+                   <input type="text" name="agent_comments" placeholder="Enter a love note">
+                   <br>
+                   <button type="submit" name="button">Submit</button>
+                 </form>
+               </div>
              </div>
-
-             <form action="/appointments/view/<%=appointments[0].id %>" method="post">
-               <input type="text"  name="agent_comments" placeholder="Enter a love note"><br>
-               <button type="submit" name="button">Submit</button>
-             </form>
+             <% } %>
             </div>
           </div>
         </div>

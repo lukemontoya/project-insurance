@@ -26,18 +26,25 @@
         font-weight: 200;
       }
       }
+      .card-block{
+      padding: 1EM;
+      border: 2px solid black;
+      }
+      .comments{
+      padding: 1EM;
+      }
 
       .card {
+      margin-left: 7EM;
       background: #fff;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-
+      border: 2px solid #fff;
       }
 
       [class*="row"] {
       margin: 0px auto;
       text-align: center;
       justify-content: center;
-
       }
 
       [class*="col-"] {
@@ -47,6 +54,7 @@
       padding-bottom: .75rem;
       width: 100%;
       }
+
       .row{
         display:inline-flex;
       }
@@ -85,7 +93,7 @@
           <div class="card">
               <% for(let i = 0; i < appointments.length; i++) { %>
               <div class="card-block">
-               <h4 class="card-title"><%= appointments[i].client_name %></h4>
+               <h2 class="card-title"><%= appointments[i].client_name %></h2>
                <p class="card-text"><%= appointments[i].client_email %></p>
                <p class="card-text"><%= appointments[i].date %></p>
                <p class="card-text"><%= appointments[i].client_comment %></p>
