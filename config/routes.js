@@ -36,7 +36,7 @@ module.exports = function(app){
   app.get('/appointments/view/:id', appts.view);
   app.post('/appointments/view/:id', appts.createComment);
   app.post('/confirm/:id', appts.sendConfirm)
-
+  app.post('/complete/:id', appts.complete)
   app.post('/logout', agentLogin.logout);
 }
 

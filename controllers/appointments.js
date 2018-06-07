@@ -69,6 +69,14 @@ module.exports = {
           });
       })
   },
+  complete: function (req, res) {
+    knex('appointments').where('id', req.params.id)
+      .update({
+        status: 'completed'
+      }).then(()=>{
+        res.redirect('/confirmed_appointments')
+      })
+  },
   sendConfirm: function (req, res) {
     knex('appointments').where('id', req.params.id)
       .update({
