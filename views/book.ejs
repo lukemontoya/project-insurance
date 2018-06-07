@@ -1,4 +1,44 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Agent Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-6">
+
+            <h2>You are booking <%= agents.agent_name %></h2>
+
+            <form action="/book/agent/<%= agents.id %>" method="post">
+
+                <input class="form-control form-control-lg" type="text" name="client_name" placeholder="Name">
+                <input class="form-control form-control-lg" type="email" name="client_email" placeholder="Email">
+                <input class="form-control form-control-lg" type="text" name="date" placeholder="Date">
+                <input class="form-control form-control-lg" type="text" name="client_comment" placeholder="Comment">
+                  <br>
+                <button class="btn btn-primary" type="submit" value="Book It!">Book It!</button>
+
+              </form>
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -45,4 +85,4 @@
       <input class="submit" type="submit" value="Book It!">
     </form>
   </body>
-</html>
+</html> -->
