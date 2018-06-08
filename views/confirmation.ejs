@@ -8,11 +8,15 @@
       body {
         background-color: #eee;
       }
+      .jumbotron{
+        text-align: center;
+      }
+
     </style>
   </head>
   <body>
     <div class="jumbotron">
-      <h1 class="display-4">This is what in the industry is called a Confirmation Note</h1>
+      <h2 class="display-4">This is what in the industry is called a Confirmation Note</h2>
       <p class="lead">Thank you,
       <%= appointments[0].client_name %>, for choosing
         <%= agents[0].agent_name %>. </p>
@@ -24,6 +28,6 @@
       <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
     </div>
 
-    
+
   </body>
 </html>
