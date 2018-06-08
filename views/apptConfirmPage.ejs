@@ -27,10 +27,12 @@
       }
       }
       .card-block{
+      width: 25EM;
       padding: 1EM;
       }
       .comments{
-        padding: 1EM;
+
+        padding-bottom: 2EM;
       }
       .card {
       margin-left: 7EM;
@@ -105,7 +107,7 @@
 
                  <form action="/appointments/view/<%=appointments[0].id %>" method="post">
                    <input type="text" name="agent_comments" placeholder="Enter a love note">
-                   <br>
+                   
                    <button type="submit" name="button">Submit</button>
                  </form>
                </div>
